@@ -1,0 +1,30 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "ucak": "aksungur",
+      "musteri": "Ahmet Yilmaz",
+      "tarih": "2023-12-12"
+    },
+    {
+      "id": 7789,
+      "ucak": "uçak",
+      "musteri": "musteri"
+    },
+    {
+      "id": 4387,
+      "ucak": "deneme",
+      "musteri": "deneme"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
