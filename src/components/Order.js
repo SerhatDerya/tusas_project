@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* import { useState } from "react";
 import EditOrder from './EditOrder';
 
 function Order({ order, onEdit, onDelete }){
@@ -32,4 +32,4 @@ function Order({ order, onEdit, onDelete }){
     </div>;
 }
 
-export default Order;
+export default Order; */
