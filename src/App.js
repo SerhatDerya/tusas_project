@@ -8,7 +8,6 @@ function App(){
     const [orders, setOrders] = useState([]);
     const [ucak, setUcak] = useState();
     const [musteri, setMusteri] = useState();
-
     
 
     const fetchOrders = async () => {
@@ -47,7 +46,8 @@ function App(){
         const response = await axios.put(`http://localhost:3001/orders/${newData.id}`, {
             "id":newData.id,
             "ucak":newData.ucak,
-            "musteri":newData.musteri
+            "musteri":newData.musteri,
+            "tarih": newData.tarih
         });
     };
 
@@ -61,11 +61,12 @@ function App(){
         setOrders(updatedOrders);
     }
 
-    const createOrder = async (ucak, musteri) => {
+    const createOrder = async (ucak, musteri, tarih) => {
         const response = await axios.post('http://localhost:3001/orders', {
                 "id": Math.floor(Math.random()*9999),
                 "ucak":ucak,
-                "musteri":musteri
+                "musteri":musteri,
+                "tarih":tarih
         });
 
         const updatedOrders = [
