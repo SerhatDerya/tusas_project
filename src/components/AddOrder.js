@@ -4,18 +4,24 @@ import React, { useRef } from 'react';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
+import { Dropdown } from 'primereact/dropdown';
+import { Calendar } from 'primereact/calendar';
 
 function AddOrder({ onCreate }){
     const [ucak, setUcak] = useState("");
     const [musteri, setMusteri] = useState("");
+    const [tarih, setTarih] = useState("");
 
     const op = useRef(null);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        onCreate(ucak,musteri);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const tarih_parsed = tarih.getDate()+"/"+(tarih.getMonth()+1)+"/"+tarih.getFullYear();
+        onCreate(ucak,musteri,tarih_parsed);
+        op.current.toggle(e);
         setUcak('');
         setMusteri('');
+        setTarih('');
     }
 
     return <div>
@@ -26,7 +32,7 @@ function AddOrder({ onCreate }){
                         <span className="p-inputgroup-addon">
                             <i className="pi pi-send"></i>
                         </span>
-                        <InputText placeholder="Uçak" value={ucak} onChange={(e) => setUcak(e.target.value)} />
+                        <Dropdown placeholder="Uçak" value={ucak} options={["Aksungur","Anka","Gökbey","Hürjet"]} onChange={(e) => setUcak(e.target.value)} />
                     </div>
 
                     <div className="p-inputgroup flex-1" style={{marginBottom: '1rem'}}>
@@ -37,11 +43,11 @@ function AddOrder({ onCreate }){
                     </div>
 
                     <div className="p-inputgroup flex-1" style={{marginBottom: '1rem'}}>
-                        <span className="p-inputgroup-addon">www</span>
-                        <InputText placeholder="Website" />
+                        <span className="p-inputgroup-addon"><i className="pi pi-calendar"></i></span>
+                        <Calendar placeholder="Üretim Tarihi" value={tarih} onChange={(e) => setTarih(e.target.value)} dateFormat="dd/mm/yy" />
                     </div>
 
-                    <Button type='Button' icon="pi pi-save" label='Kaydet' onClick={handleSubmit}/>
+                    <Button type='Button' icon="pi pi-save" label='Kaydet' onClick={handleSubmit} />
                 </div>
             </OverlayPanel>
     </div>
