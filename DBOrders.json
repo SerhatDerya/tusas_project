@@ -2,31 +2,50 @@
   "orders": [
     {
       "id": 1100,
+      "ucakKodu": "THS109",
       "ucak": "Aksungur",
       "musteri": "Ahmet Yıldız",
       "tarih": "13/5/2027"
     },
     {
       "id": 4609,
+      "ucakKodu": "THS104",
       "ucak": "Anka",
       "musteri": "Kerim Kaya",
       "tarih": "21/1/2026"
     },
     {
       "id": 9334,
+      "ucakKodu": "THS129",
       "ucak": "Gökbey",
       "musteri": "Serhat Derya",
-      "tarih": "7/12/2023"
+      "tarih": "6/12/2023"
     }
   ],
-  "comments": [
+  "ucuslar": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "ucakAdi": "THS109",
+      "kalkisYeri": "Bursa",
+      "inisYeri": "İstanbul",
+      "kalkisSaati": "13.00",
+      "inisSaati": "23.00",
+      "ucusSuresi": ""
+    },
+    {
+      "id": 2,
+      "ucakAdi": "TH119",
+      "kalkisYeri": "İstanbul",
+      "inisYeri": "Samsun",
+      "kalkisSaati": "10.30",
+      "inisSaati": "12.00",
+      "ucusSuresi": ""
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "ucakTipleri": [
+    "Aksungur",
+    "Anka",
+    "Gökbey",
+    "Hürjet"
+  ]
 }
