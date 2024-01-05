@@ -22,7 +22,8 @@ function Orders({ orders, onDelete, onEdit }){
     };
 
     const dateEditor = (options) => {
-        return <Calendar onChange={(e) => options.editorCallback(e.target.value.getDate()+"/"+(e.target.value.getMonth()+1)+"/"+e.target.value.getFullYear())} dateFormat="dd/mm/yy" />
+        
+        return <Calendar value={new Date(options.value)} onChange={(e) => options.editorCallback(e.target.value.getDate()+"/"+(e.target.value.getMonth()+1)+"/"+e.target.value.getFullYear())} dateFormat="dd/mm/yy" />
     }
 
     const drowdownEditor = (options) => {
