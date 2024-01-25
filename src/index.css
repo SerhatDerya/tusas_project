@@ -1,3 +1,34 @@
 .tabMenu{
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.adminPanel{
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.adminPanelMenu{
+  display: inline;
+  position: relative;
+  margin-right: 5rem;
+}
+
+.adminPanelContent{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.adminDataTable{
+  display: inline-block;
+  position: relative;
+  margin-right: 1rem;
+}
+
+.addUcakTipiBtn{
+  display: inline-block;
+  position: absolute;
+  margin-right: 2rem;
 }
