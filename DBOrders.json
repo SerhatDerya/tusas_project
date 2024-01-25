@@ -5,21 +5,40 @@
       "ucakKodu": "THS109",
       "ucak": "Aksungur",
       "musteri": "Ahmet Yıldız",
-      "tarih": "13/5/2027"
+      "tarih": "13/5/2027",
+      "toplamUcusSuresi": "0sa 0dk"
     },
     {
       "id": 4609,
       "ucakKodu": "THS104",
       "ucak": "Anka",
       "musteri": "Kerim Kaya",
-      "tarih": "21/1/2026"
+      "tarih": "21/1/2026",
+      "toplamUcusSuresi": "4sa 0dk"
     },
     {
       "id": 9334,
       "ucakKodu": "THS129",
       "ucak": "Gökbey",
       "musteri": "Serhat Derya",
-      "tarih": "6/12/2023"
+      "tarih": "6/12/2023",
+      "toplamUcusSuresi": "0sa 0dk"
+    },
+    {
+      "id": 4896,
+      "ucakKodu": "THS235",
+      "ucak": "Aksungur",
+      "musteri": "Müşteri A",
+      "tarih": "22/1/2024",
+      "toplamUcusSuresi": "3sa 53dk"
+    },
+    {
+      "id": 1408,
+      "ucakKodu": "DenemeUcak1234",
+      "ucak": "Aksungur",
+      "musteri": "Müşteri C",
+      "tarih": "22/1/2024",
+      "toplamUcusSuresi": "3sa 0dk"
     }
   ],
   "ucuslar": [
@@ -27,25 +46,118 @@
       "id": 1,
       "ucakAdi": "THS109",
       "kalkisYeri": "Bursa",
-      "inisYeri": "İstanbul",
-      "kalkisSaati": "13.00",
-      "inisSaati": "23.00",
-      "ucusSuresi": ""
+      "inisYeri": "Ankara",
+      "kalkisSaati": "Wed Oct 24 2001 17:10:00 GMT+0300 (GMT+03:00)",
+      "inisSaati": "Wed Oct 24 2001 19:30:00 GMT+0300 (GMT+03:00)",
+      "ucusSuresi": "2sa 20dk"
     },
     {
       "id": 2,
       "ucakAdi": "TH119",
       "kalkisYeri": "İstanbul",
-      "inisYeri": "Samsun",
-      "kalkisSaati": "10.30",
-      "inisSaati": "12.00",
-      "ucusSuresi": ""
+      "inisYeri": "Adana",
+      "kalkisSaati": "Sun Jan 21 2024 18:00:00 GMT+0300 (GMT+03:00)",
+      "inisSaati": "Sun Jan 21 2024 22:20:00 GMT+0300 (GMT+03:00)",
+      "ucusSuresi": "4sa 20dk"
+    },
+    {
+      "id": 1378,
+      "ucakAdi": "THS104",
+      "kalkisYeri": "İstanbul",
+      "inisYeri": "Adana",
+      "kalkisSaati": "2024-01-21T09:51:36.185Z",
+      "inisSaati": "2024-01-21T11:51:36.185Z",
+      "ucusSuresi": "2sa 0dk"
+    },
+    {
+      "id": 4088,
+      "ucakAdi": "THS235",
+      "kalkisYeri": "Adana",
+      "inisYeri": "Bursa",
+      "kalkisSaati": "2024-01-22T10:42:22.484Z",
+      "inisSaati": "2024-01-22T12:35:22.484Z",
+      "ucusSuresi": "1sa 53dk"
+    },
+    {
+      "id": 9480,
+      "ucakAdi": "THS235",
+      "kalkisYeri": "Adana",
+      "inisYeri": "Bursa",
+      "kalkisSaati": "2024-01-21T10:42:47.693Z",
+      "inisSaati": "2024-01-21T12:42:47.693Z",
+      "ucusSuresi": "2sa 0dk"
+    },
+    {
+      "id": 1435,
+      "ucakAdi": "DenemeUcak1234",
+      "kalkisYeri": "Adana",
+      "inisYeri": "Bursa",
+      "kalkisSaati": "2024-01-22T12:20:15.059Z",
+      "inisSaati": "2024-01-22T15:20:15.059Z",
+      "ucusSuresi": "3sa 0dk"
+    },
+    {
+      "id": 3249,
+      "ucakAdi": "THS104",
+      "kalkisYeri": "Adana",
+      "inisYeri": "Ankara",
+      "kalkisSaati": "2024-01-21T11:20:03.616Z",
+      "inisSaati": "2024-01-21T13:20:03.616Z",
+      "ucusSuresi": "2sa 0dk"
     }
   ],
   "ucakTipleri": [
-    "Aksungur",
-    "Anka",
-    "Gökbey",
-    "Hürjet"
+    {
+      "id": 1,
+      "ucakTipi": "Aksungur"
+    },
+    {
+      "id": 2,
+      "ucakTipi": "Anka"
+    },
+    {
+      "id": 3,
+      "ucakTipi": "Gökbey"
+    },
+    {
+      "id": 4,
+      "ucakTipi": "Hürjet"
+    }
+  ],
+  "musteriler": [
+    {
+      "id": 1,
+      "musteriAdi": "Musteri A"
+    },
+    {
+      "id": 2,
+      "musteriAdi": "Musteri B"
+    },
+    {
+      "id": 3,
+      "musteriAdi": "Musteri C"
+    },
+    {
+      "id": 4,
+      "musteriAdi": "Musteri D"
+    }
+  ],
+  "lokasyonlar": [
+    {
+      "id": 1,
+      "lokasyonAdi": "İstanbul"
+    },
+    {
+      "id": 2,
+      "lokasyonAdi": "Adana"
+    },
+    {
+      "id": 3,
+      "lokasyonAdi": "Bursa"
+    },
+    {
+      "id": 4,
+      "lokasyonAdi": "Ankara"
+    }
   ]
 }
