@@ -11,11 +11,7 @@ import { Dropdown } from 'primereact/dropdown';
 import AddOrder from './AddOrder';
 
 
-function Orders({ orders, onDelete, onEdit, onCreate }){
-
-    /* const renderedOrders = orders.map((order) => {
-        return <Order onEdit={onEdit} onDelete={onDelete} key={order.id} order={order} />
-    }); */
+function Orders({ orders, musteriler, ucakTipleri, lokasyonlar, onDelete, onEdit, onCreate }){
 
     const textEditor = (options) => {
         return <InputText type="text" value={options.value} onChange={(e) => options.editorCallback(e.target.value)} />;
@@ -23,14 +19,19 @@ function Orders({ orders, onDelete, onEdit, onCreate }){
 
     const dateEditor = (options) => {
         
-        return <Calendar value={new Date(options.value)} onChange={(e) => options.editorCallback(e.target.value.getDate()+"/"+(e.target.value.getMonth()+1)+"/"+e.target.value.getFullYear())} dateFormat="dd/mm/yy" />
+        return <Calendar value={options.value} onChange={(e) => options.editorCallback(e.target.value.getFullYear()+"-"+(e.target.value.getMonth()+1)+"-"+e.target.value.getDate())} dateFormat="dd/mm/yy" />
     }
 
-    const dropdownEditor = (options) => {
+    const dropdownEditorUcakTipi = (options) => {
         
-        return <Dropdown value={options.value} options={["Aksungur","Anka","Gökbey","Hürjet"]} onChange={(e) => options.editorCallback(e.target.value)} />
+        return <Dropdown value={options.value} options={ucakTipleri} onChange={(e) => options.editorCallback(e.target.value)} />
     }
     
+    const dropdownEditorMusteri = (options) => {
+        
+        return <Dropdown value={options.value} options={musteriler} onChange={(e) => options.editorCallback(e.target.value)} />
+    }
+
     const onRowEditComplete = (e) => {
         onEdit(e);
     };
@@ -42,17 +43,18 @@ function Orders({ orders, onDelete, onEdit, onCreate }){
             </React.Fragment>
         );
     };
-
+    
 
     return (
     <div className='card'>
-        <AddOrder onCreate={onCreate} />
+        <AddOrder onCreate={onCreate} musteriler={musteriler} ucakTipleri={ucakTipleri} />
         <DataTable value={orders} stripedRows editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete}  tableStyle={{ minWidth: '50rem' }}>
-                <Column  field="id" header="Id"></Column>
+                <Column field="id" header="Id"></Column>
                 <Column field="ucakKodu" header="Uçak Adı"  editor={(options) => textEditor(options)}></Column>
-                <Column field="ucak" header="Uçak Tipi"  editor={(options) => dropdownEditor(options)}></Column>
-                <Column field="musteri" header="Müşteri" editor={(options) => textEditor(options)}></Column>
+                <Column field="ucak" header="Uçak Tipi"  editor={(options) => dropdownEditorUcakTipi(options)}></Column>
+                <Column field="musteri" header="Müşteri" editor={(options) => dropdownEditorMusteri(options)}></Column>
                 <Column field='tarih' header="Üretim Tarihi" editor={(options) => dateEditor(options)}></Column>
+                <Column field='toplamUcusSuresi' header="Toplam Uçuş Süresi"></Column>
                 <Column rowEditor headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
                 <Column body={BodyTemplate}></Column>
         </DataTable>
