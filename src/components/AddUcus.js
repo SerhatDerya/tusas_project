@@ -62,12 +62,12 @@ function AddUcus({ onCreate, lokasyonlar }){
 
                     <div className="p-inputgroup flex-1" style={{marginBottom: '1rem'}}>
                         <span className="p-inputgroup-addon"><i className="pi pi-calendar"></i></span>
-                        <Calendar placeholder="Kalkış Saati" value={kalkisSaati} onChange={(e) => setKalkisSaati(e.target.value)} showTime hourFormat='24' dateFormat="dd/mm/yy" />
+                        <Calendar placeholder="Kalkış Saati" value={kalkisSaati} onChange={(e) => setKalkisSaati(e.target.value.getFullYear()+"-"+(e.target.value.getMonth()+1)+"-"+e.target.value.getDate()+" "+e.target.value.getHours()+":"+e.target.value.getMinutes()+":00")} showTime hourFormat='24' dateFormat="dd/mm/yy" />
                     </div>
 
                     <div className="p-inputgroup flex-1" style={{marginBottom: '1rem'}}>
                         <span className="p-inputgroup-addon"><i className="pi pi-calendar"></i></span>
-                        <Calendar placeholder="İniş Saati" value={inisSaati} onChange={(e) => setInisSaati(e.target.value)} showTime hourFormat='24' dateFormat="dd/mm/yy" />
+                        <Calendar placeholder="İniş Saati" value={inisSaati} onChange={(e) => setInisSaati(e.target.value.getFullYear()+"-"+(e.target.value.getMonth()+1)+"-"+e.target.value.getDate()+" "+e.target.value.getHours()+":"+e.target.value.getMinutes()+":00")} showTime hourFormat='24' dateFormat="dd/mm/yy" />
                     </div>
 
                     <Button type='Button' icon="pi pi-save" label='Kaydet' onClick={handleSubmit} />
