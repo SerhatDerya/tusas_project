@@ -87,6 +87,29 @@ function Ucuslar({toast, lokasyonlar}){
                 setUcuslar(_ucuslar);
 
                 const ucusSuresi = Math.floor((new Date(newData.inisSaati) - new Date(newData.kalkisSaati)) / (60000 * 60)) + "sa " + Math.floor((new Date(newData.inisSaati) - new Date(newData.kalkisSaati)) / 60000)%60 + "dk";
+                console.log("kalkis:" + newData.kalkisSaati + ", inis:" + newData.inisSaati + ", ucussure:" + ucusSuresi );
+
+                const old_ucus = await axios.get(`http://localhost:8081/ucuslar/${newData.id}`);
+                const old_ucusSuresi = old_ucus["data"][0]["ucusSuresi"];
+                const old_ucusSuresiDk = parseInt(old_ucusSuresi.split("sa")[0]*60) + parseInt(old_ucusSuresi.split("sa")[1]);
+                const ucusSuresiDk = (new Date(newData.inisSaati) - new Date(newData.kalkisSaati))/60000;
+                const sureFarkDk = ucusSuresiDk - old_ucusSuresiDk;
+                console.log(sureFarkDk);
+                const old_ucak = await axios.get(`http://localhost:8081/orders/ucakKodu/${newData.ucakAdi}`);
+                const old_ucakTopUcusSuresi = old_ucak["data"][0]["toplamUcusSuresi"];
+                const old_ucakTopUcusSuresiDk = parseInt(old_ucakTopUcusSuresi.split("sa")[0]*60) + parseInt(old_ucakTopUcusSuresi.split("sa")[1]);
+
+                const new_ucakTopUcusSuresiDk = old_ucakTopUcusSuresiDk + sureFarkDk;
+                const new_ucakTopUcusSuresi = Math.floor(new_ucakTopUcusSuresiDk/60) + "sa " + Math.floor(new_ucakTopUcusSuresiDk%60) + "dk";
+                console.log(new_ucakTopUcusSuresi);
+                await axios.put(`http://localhost:8081/orders/ucakKodu/${newData.ucakAdi}`, {
+                    "id":old_ucak["data"][0]["id"],
+                    "ucakKodu":old_ucak["data"][0]["ucakKodu"],
+                    "ucak":old_ucak["data"][0]["ucak"],
+                    "musteri":old_ucak["data"][0]["musteri"],
+                    "tarih":old_ucak["data"][0]["tarih"],
+                    "toplamUcusSuresi": new_ucakTopUcusSuresi,
+                });
 
                 await axios.put(`http://localhost:8081/ucuslar/${newData.id}`, {
                     "id":newData.id,
@@ -98,22 +121,6 @@ function Ucuslar({toast, lokasyonlar}){
                     "ucusSuresi": ucusSuresi,
                 });
 
-                const ucak = await axios.get(`http://localhost:8081/orders/ucakKodu/${newData.ucakAdi}`);
-                //const ucak = JSON.parse(ucak_res);
-                console.log(ucak);
-                const res = await axios.get(`http://localhost:8081/ucuslar/ucakKoduSum/${newData.ucakAdi}`);
-                
-                const ucusSuresiSum = res["data"][0]["SUM(ucusSuresi)"];
-                console.log(ucak["data"][0]);
-                await axios.put(`http://localhost:8081/orders/ucakKodu/${newData.ucakAdi}`, {
-                    "id": ucak["data"][0]["id"],
-                    "ucakKodu": ucak["data"][0]["ucakKodu"],
-                    "ucak": ucak["data"][0]["ucak"],
-                    "musteri": ucak["data"][0]["musteri"],
-                    "tarih": ucak["data"][0]["tarih"],
-                    "toplamUcusSuresi": ucusSuresiSum
-                });
-            
                 toast.current.show({ severity: 'success', summary: 'İşlem Tamamlandı', detail: 'Uçuş bilgileri başarıyla değiştirildi', life: 3000 });
             },
             acceptLabel: 'Evet',
@@ -178,7 +185,7 @@ function Ucuslar({toast, lokasyonlar}){
 
     const dateEditor = (options) => {
         
-        return <Calendar value={new Date(options.value)} onChange={(e) => options.editorCallback(e.target.value.toString())} showTime hourFormat='24' dateFormat="dd/mm/yy" />
+        return <Calendar value={new Date(options.value)} onChange={(e) => options.editorCallback(e.target.value.getFullYear()+"-"+(e.target.value.getMonth()+1)+"-"+e.target.value.getDate()+" "+e.target.value.getHours()+":"+e.target.value.getMinutes()+":00")} showTime hourFormat='24' dateFormat="yy/mm/dd" />
     }
 
     const dropdownEditor = (options) => {
