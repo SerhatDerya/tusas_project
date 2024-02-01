@@ -148,6 +148,15 @@ app.get('/orders/ucakKodu/:ucakKodu', (req, res) => {
   })
 })
 
+app.put('/orders/ucakKodu/:ucakKodu', (req, res) => {
+  const req_data = [req.body.id, req.body.ucakKodu, req.body.ucak, req.body.musteri, req.body.tarih, req.body.toplamUcusSuresi, req.params.ucakKodu];
+  const sql = "UPDATE ucaklar SET id=?, ucakKodu=?, ucak=?, musteri=?, tarih=?, toplamUcusSuresi=? WHERE ucakKodu=?";
+  db.query(sql, req_data, (err, data) => {
+    if(err) return res.json(err);
+    return res.json(data);
+  })
+})
+
 app.post('/orders', (req, res) => {
   const req_data = [req.body.id, req.body.ucakKodu, req.body.ucak, req.body.musteri, req.body.tarih, req.body.toplamUcusSuresi]
   
