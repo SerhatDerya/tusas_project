@@ -63,7 +63,6 @@ function App(){
 
     const fetchOrders = async () => {
         const response = await axios.get('http://localhost:8081/orders');
-        console.log(response.data)
         setOrders(response.data);
     };
 
@@ -75,20 +74,6 @@ function App(){
     }, [activeIndex]);
 
     const editOrder = async (e) => {
-        /* const response = await axios.put(`http://localhost:3001/orders/${id}`, {
-            "ucak":ucak,
-            "musteri":musteri
-        });
-
-        const updatedOrders = orders.map((order) => {
-            if(order.id === id){
-                return {...order, ...response.data};
-            }
-
-            return order;
-        })
-
-        setOrders(updatedOrders); */
 
         confirmDialog({
             message: 'Uçak bilgilerini değiştirmek istediğinize emin misiniz?',
@@ -100,7 +85,6 @@ function App(){
                 let { newData, index } = e;
 
                 _orders[index] = newData;
-                console.log(newData);
                 setOrders(_orders);
 
 
@@ -167,8 +151,6 @@ function App(){
         <ConfirmDialog />
         <TabMenu model={menuItems} className="tabMenu" activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}/>
         <MainContent activeIndex={activeIndex} onEdit={editOrder} orders={orders} musteriler={musteriler} musterilerTable={musterilerTable} ucakTipleri={ucakTipleri} ucakTipleriTable={ucakTipleriTable} lokasyonlar={lokasyonlar} lokasyonlarTable={lokasyonlarTable} onDelete={deleteOrder} onCreate={createOrder} toast={toast} />
-        {/* <Orders onEdit={editOrder} orders={orders} onDelete={deleteOrder} />
-        <Ucuslar onEdit={editOrder} orders={orders} onDelete={deleteOrder} /> */}
     </div>
 }
 
